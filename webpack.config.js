@@ -16,6 +16,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: "Tales",
+      template: "src/public/index.html",
     }),
     !isProduction() && new webpack.HotModuleReplacementPlugin(),
   ].filter(Boolean),

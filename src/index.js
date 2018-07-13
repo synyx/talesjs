@@ -1,1 +1,2 @@
-alert("jeeeehaw");
+import "./components/filepicker";
+import "./components/stage";

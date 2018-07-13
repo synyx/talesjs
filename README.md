@@ -38,4 +38,7 @@ Installing the project dependencies via `npm install` will setup following git h
 - **pre-commit**  
   The pre-commit hook formats all edited files with prettier.
 
+- **pre-push**  
+  The pre-push hook will run the tests before anything is pushed to the origin.
+
 [webpack-dev-server]: (https://webpack.js.org/configuration/dev-server/)
