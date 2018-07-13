@@ -20,6 +20,16 @@ module.exports = {
     !isProduction() && new webpack.HotModuleReplacementPlugin(),
   ].filter(Boolean),
 
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        include: "/src",
+        use: ["style-loader", "css-loader"],
+      },
+    ],
+  },
+
   devServer: {
     port: 8080,
     hot: true,
