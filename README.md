@@ -1,5 +1,6 @@
 # Tales
 
+[![Build Status](https://travis-ci.org/synyx/tales.svg?branch=master)](https://travis-ci.org/synyx/tales)
 [![Coverage Status](https://coveralls.io/repos/github/synyx/tales/badge.svg?branch=master)](https://coveralls.io/github/synyx/tales?branch=master)
 
 ## Development
