@@ -1,7 +1,9 @@
+[![build status][travis-image]][travis-url]
+[![coverage status][coveralls-image]][coveralls-url]
+
 # Tales
 
-[![Build Status](https://travis-ci.org/synyx/tales.svg?branch=master)](https://travis-ci.org/synyx/tales)
-[![Coverage Status](https://coveralls.io/repos/github/synyx/tales/badge.svg?branch=master)](https://coveralls.io/github/synyx/tales?branch=master)
+synyx presentation style for everyone
 
 ## Development
 
@@ -36,6 +38,14 @@ So saving an edited JavaScript file for instance will update the opened Browsert
 Installing the project dependencies via `npm install` will setup following git hooks.
 
 - **pre-commit**  
-  The pre-commit hook formats all edited files with prettier.
+  The pre-commit hook formats all edited files with [prettier].
 
-[webpack-dev-server]: (https://webpack.js.org/configuration/dev-server/)
+- **pre-push**  
+  The pre-push hook will run the tests before anything is pushed to the origin.
+
+[travis-image]: https://travis-ci.org/synyx/tales.svg?branch=master
+[travis-url]: https://travis-ci.org/synyx/tales
+[coveralls-image]: https://coveralls.io/repos/github/synyx/tales/badge.svg?branch=master
+[coveralls-url]: https://coveralls.io/github/synyx/tales?branch=master
+[prettier]: https://github.com/prettier/prettier
+[webpack-dev-server]: https://webpack.js.org/configuration/dev-server
