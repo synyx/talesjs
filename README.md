@@ -1,5 +1,7 @@
 # Tales
 
+[![Coverage Status](https://coveralls.io/repos/github/synyx/tales/badge.svg?branch=master)](https://coveralls.io/github/synyx/tales?branch=master)
+
 ## Development
 
 ensure installed
