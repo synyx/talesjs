@@ -11,6 +11,12 @@ ensure installed
 
 - NodeJS v8
 
+Note:
+there is also a `npm` bash script which executes all commands within a docker container.
+so you don't have to have local node/npm binaries. however, it is recommended to use a local
+installation since this is much more performant. To use the `npm` script simply replace all
+npm commands below with `./npm` (e.g. `./npm install` or `./npm run test`)
+
 checkout this project
 
 ```
