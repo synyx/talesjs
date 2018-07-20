@@ -1,11 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Stage renders with image 1`] = `
-<div>
+<div
+  style={
+    Object {
+      "height": "400px",
+      "overflow": "hidden",
+      "width": "800px",
+    }
+  }
+>
   <img
     src="awesome-image-source"
+    style={
+      Object {
+        "transform": "scale(1, 1)",
+      }
+    }
   />
 </div>
 `;
 
-exports[`Stage renders without image 1`] = `<div />`;
+exports[`Stage renders without image 1`] = `
+<div
+  style={
+    Object {
+      "height": "400px",
+      "overflow": "hidden",
+      "width": "800px",
+    }
+  }
+/>
+`;

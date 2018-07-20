@@ -1,16 +1,16 @@
 import React from "react";
 import Stage from "../Stage";
-import { renderShallow } from "../../../test";
+import { render } from "../../../test";
 
 describe("Stage", () => {
   it("renders without image", () => {
-    const tree = renderShallow(<Stage />);
+    const tree = render(<Stage />);
     expect(tree).toMatchSnapshot();
   });
 
   it("renders with image", () => {
     const image = { src: "awesome-image-source" };
-    const tree = renderShallow(<Stage image={image} />);
+    const tree = render(<Stage image={image} />);
     expect(tree).toMatchSnapshot();
   });
 });
