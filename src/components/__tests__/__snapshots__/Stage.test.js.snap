@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Stage renders with image 1`] = `
+<div>
+  <img
+    src="awesome-image-source"
+  />
+</div>
+`;
+
+exports[`Stage renders without image 1`] = `<div />`;
