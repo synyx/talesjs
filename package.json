@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint src",
+    "lint": "eslint src test",
     "test": "jest",
     "format": "prettier --write 'src/**/*.js' 'src/**/*.jsx'",
     "dev": "NODE_ENV=development webpack-dev-server --mode=development",
