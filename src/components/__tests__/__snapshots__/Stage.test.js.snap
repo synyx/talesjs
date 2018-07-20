@@ -10,14 +10,22 @@ exports[`Stage renders with image 1`] = `
     }
   }
 >
-  <img
-    src="awesome-image-source"
+  <div
     style={
       Object {
-        "transform": "scale(1, 1)",
+        "userSelect": "none",
       }
     }
-  />
+  >
+    <img
+      src="awesome-image-source"
+      style={
+        Object {
+          "transform": "scale(1, 1) translate3d(0px, 0px, 0)",
+        }
+      }
+    />
+  </div>
 </div>
 `;
 
