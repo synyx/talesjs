@@ -52,8 +52,7 @@
     "collectCoverageFrom": [
       "src/**/*.js",
       "src/**/*.jsx",
-      "!src/**/*.test.js",
-      "!src/**/*.test.jsx"
+      "!src/**/__tests__/**/*"
     ],
     "coverageDirectory": "<rootDir>/coverage",
     "roots": [
