@@ -2,13 +2,7 @@
 
 exports[`Stage renders with image 1`] = `
 <div
-  style={
-    Object {
-      "height": "400px",
-      "overflow": "hidden",
-      "width": "800px",
-    }
-  }
+  className="stage"
 >
   <div
     style={
@@ -31,12 +25,6 @@ exports[`Stage renders with image 1`] = `
 
 exports[`Stage renders without image 1`] = `
 <div
-  style={
-    Object {
-      "height": "400px",
-      "overflow": "hidden",
-      "width": "800px",
-    }
-  }
+  className="stage"
 />
 `;

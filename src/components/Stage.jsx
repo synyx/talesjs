@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Zoomable from "./Zoomable";
 import Moveable from "./Moveable";
+import styles from "./stage.css";
 
 export default class Stage extends React.Component {
   static propTypes = {
@@ -11,7 +12,7 @@ export default class Stage extends React.Component {
   render() {
     const { image } = this.props;
     return (
-      <div style={{ overflow: "hidden", width: "800px", height: "400px" }}>
+      <div className={styles.stage}>
         {image ? (
           <Zoomable maxZoom={5}>
             {({ zoom }) => (
