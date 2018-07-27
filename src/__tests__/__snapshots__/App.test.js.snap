@@ -5,7 +5,36 @@ exports[`App renders 1`] = `
   <ImagePicker
     onFileSelect={[Function]}
   />
+  <div>
+    <input
+      checked={true}
+      id="action_zoom"
+      name="action"
+      onChange={[Function]}
+      type="radio"
+      value="zoom"
+    />
+    <label
+      htmlFor="action_zoom"
+    >
+      zoom
+    </label>
+    <input
+      checked={false}
+      id="action_select"
+      name="action"
+      onChange={[Function]}
+      type="radio"
+      value="select"
+    />
+    <label
+      htmlFor="action_select"
+    >
+      select
+    </label>
+  </div>
   <Stage
+    action="zoom"
     image={null}
   />
 </React.Fragment>

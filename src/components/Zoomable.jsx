@@ -5,6 +5,7 @@ export default class Zoomable extends React.Component {
   static propTypes = {
     children: PropTypes.func.isRequired,
     maxZoom: PropTypes.number,
+    zoomable: PropTypes.bool,
   };
 
   state = {
@@ -13,6 +14,9 @@ export default class Zoomable extends React.Component {
 
   componentDidMount() {
     const handleWheel = e => {
+      if (!this.props.zoomable) {
+        return;
+      }
       e.preventDefault();
       window.requestAnimationFrame(() => {
         this.setState((state, props) => {

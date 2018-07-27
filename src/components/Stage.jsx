@@ -7,16 +7,21 @@ import styles from "./stage.css";
 export default class Stage extends React.Component {
   static propTypes = {
     image: PropTypes.object,
+    action: PropTypes.oneOf(["zoom", "select"]),
+  };
+
+  static defaultProps = {
+    action: "zoom",
   };
 
   render() {
-    const { image } = this.props;
+    const { image, action } = this.props;
     return (
       <div className={styles.stage}>
         {image ? (
-          <Zoomable maxZoom={5}>
+          <Zoomable maxZoom={5} zoomable={action === "zoom"}>
             {({ zoom }) => (
-              <Moveable movable={zoom !== 1}>
+              <Moveable movable={action === "zoom" && zoom !== 1}>
                 {({ left, top }) => (
                   <img
                     src={image.src}
