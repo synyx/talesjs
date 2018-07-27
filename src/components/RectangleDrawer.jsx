@@ -27,7 +27,7 @@ export default class RectangleDrawer extends React.Component {
     };
 
     const handleMouseDown = event => {
-      if (this.props.drawable) {
+      if (event.target.tagName !== "rect" && this.props.drawable) {
         drawing = true;
         start = {
           x: event.clientX - root.x,
@@ -109,18 +109,43 @@ export default class RectangleDrawer extends React.Component {
             }}
           >
             <svg width="100%" height="100%">
-              <rect
+              <Rect
                 x={rectangle.x}
                 y={rectangle.y}
                 width={rectangle.width}
                 height={rectangle.height}
-                stroke="blue"
-                fill="rgba(0,0,0,0.8)"
               />
             </svg>
           </div>
         )}
       </div>
+    );
+  }
+}
+
+class Rect extends React.Component {
+  state = {
+    selected: false,
+  };
+
+  handleRectClick(event) {
+    event.stopPropagation();
+    this.setState({ selected: !this.state.selected });
+  }
+
+  render() {
+    const { x, y, width, height } = this.props;
+    const { selected } = this.state;
+    return (
+      <rect
+        x={x}
+        y={y}
+        width={width}
+        height={height}
+        onClick={event => this.handleRectClick(event)}
+        stroke={selected ? "purple" : "blue"}
+        fill="rgba(0,0,0,0.8)"
+      />
     );
   }
 }
