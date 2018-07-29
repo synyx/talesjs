@@ -20,6 +20,18 @@ export default class Rectangle extends React.Component {
     selected: false,
   };
 
+  componentDidMount() {
+    const handleMouseUp = this.handleMouseUp.bind(this);
+    document.addEventListener("mouseup", handleMouseUp);
+    this.unsubscribe = () => {
+      document.removeEventListener("mouseup", handleMouseUp);
+    };
+  }
+
+  componentWillUnmount() {
+    this.unsubscribe();
+  }
+
   handleRectClick(event) {
     event.stopPropagation();
     this.setState({ selected: !this.state.selected });
@@ -60,7 +72,6 @@ export default class Rectangle extends React.Component {
         stroke={selected ? "purple" : "blue"}
         fill="rgba(0,0,0,0.8)"
         onMouseDown={event => this.handleMouseDown(event)}
-        onMouseUp={event => this.handleMouseUp(event)}
         onMouseMove={event => this.handleMouseMove(event)}
       />
     );
