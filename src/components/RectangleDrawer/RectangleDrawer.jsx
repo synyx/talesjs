@@ -8,11 +8,6 @@ export default class RectangleDrawer extends React.Component {
     drawable: PropTypes.bool,
   };
 
-  static defaultProps = {
-    movable: true,
-    factor: 1,
-  };
-
   state = {
     rectangle: null,
   };
@@ -43,6 +38,8 @@ export default class RectangleDrawer extends React.Component {
             shadow: {
               x: start.x,
               y: start.y,
+              width: 0,
+              height: 0,
             },
           },
         });
@@ -75,6 +72,8 @@ export default class RectangleDrawer extends React.Component {
               shadow: {
                 x: nextX,
                 y: nextY,
+                width: nextWidth,
+                height: nextHeight,
               },
             },
           });
@@ -128,6 +127,7 @@ export default class RectangleDrawer extends React.Component {
       rectangle: {
         ...rectangle,
         shadow: {
+          ...rectangle.shadow,
           x: nextX,
           y: nextY,
         },
@@ -136,13 +136,100 @@ export default class RectangleDrawer extends React.Component {
   }
 
   handleRectangleMoveEnd() {
+    this.flushRectangleShadow();
+  }
+
+  handleRectangleResize({ dx, dy, dwidth, dheight }) {
+    const boundingClientRect = this.rootNode.getBoundingClientRect();
+    const root = {
+      x: boundingClientRect.x,
+      y: boundingClientRect.y,
+      width: boundingClientRect.width,
+      height: boundingClientRect.height,
+    };
+
     const { rectangle } = this.state;
+    let nextX = rectangle.x + dx;
+    let nextWidth = rectangle.width + dwidth;
+    if (nextX < 0) {
+      // left overflow of the container (moving left resize item)
+      // therefore setting min nextX value of 0
+      // and nextWidth to the current rectangle(shadow) width
+      nextX = 0;
+      nextWidth = rectangle.shadow.width;
+    }
+    if (nextX + nextWidth > root.width) {
+      // nextWidth would overflow the container
+      // therefore setting max width value for current mouse x position
+      nextWidth = root.x + root.width - nextX;
+    }
+    if (nextWidth < 0) {
+      // mouse is moved more to the left than the original x value
+      // therefore setting new width to positive delta value
+      // and the nextX value to the current mouse x position
+      nextWidth = Math.abs(nextWidth);
+      nextX = rectangle.x - nextWidth;
+      if (nextX < 0) {
+        // left overflow of the container (moving right resize item)
+        // therefore setting min nextX value of 0
+        // and nextWidth to the original rectangle x value
+        nextX = 0;
+        nextWidth = rectangle.x;
+      }
+    }
+
+    let nextY = rectangle.y + dy;
+    let nextHeight = rectangle.height + dheight;
+    if (nextY < 0) {
+      // top overflow of the container (moving top resize item)
+      // therefore setting min nextY value of 0
+      // and nextHeight to the current rectangle(shadow) height
+      nextY = 0;
+      nextHeight = rectangle.shadow.height;
+    }
+    if (nextY + nextHeight > root.height) {
+      // nextHeight would overflow the container
+      // therefore setting max height value for current mouse y position
+      nextHeight = root.y + root.height - nextY;
+    }
+    if (nextHeight < 0) {
+      // mouse is moved more to the top than the original y value
+      // therefore setting new height to positive delta value
+      // and the nextY value to the current mouse y position
+      nextHeight = Math.abs(nextHeight);
+      nextY = rectangle.y - nextHeight;
+      if (nextY < 0) {
+        // top overflow of the container (moving bottom resize item)
+        // therefore setting min nextY value of 0
+        // and nextHeight to the original rectangle y value
+        nextY = 0;
+        nextHeight = rectangle.y;
+      }
+    }
+
     this.setState({
       rectangle: {
         ...rectangle,
-        x: rectangle.shadow.x,
-        y: rectangle.shadow.y,
+        shadow: {
+          ...rectangle.shadow,
+          x: nextX,
+          y: nextY,
+          width: nextWidth,
+          height: nextHeight,
+        },
       },
+    });
+  }
+
+  handleRectangleResizeEnd() {
+    this.flushRectangleShadow();
+  }
+
+  flushRectangleShadow() {
+    const { rectangle } = this.state;
+    const { shadow } = rectangle;
+    this.setState({
+      rectangle: { ...shadow, shadow },
     });
   }
 
@@ -170,10 +257,12 @@ export default class RectangleDrawer extends React.Component {
               <Rectangle
                 x={rectangle.shadow.x}
                 y={rectangle.shadow.y}
-                width={rectangle.width}
-                height={rectangle.height}
+                width={rectangle.shadow.width}
+                height={rectangle.shadow.height}
                 onMove={data => this.handleRectangleMove(data)}
                 onMoveEnd={() => this.handleRectangleMoveEnd()}
+                onResize={data => this.handleRectangleResize(data)}
+                onResizeEnd={() => this.handleRectangleResizeEnd()}
               />
             </svg>
           </div>
