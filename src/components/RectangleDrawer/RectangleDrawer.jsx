@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Rectangle from "./Rectangle";
 
 export default class RectangleDrawer extends React.Component {
   static propTypes = {
@@ -166,7 +167,7 @@ export default class RectangleDrawer extends React.Component {
             }}
           >
             <svg width="100%" height="100%">
-              <Rect
+              <Rectangle
                 x={rectangle.shadow.x}
                 y={rectangle.shadow.y}
                 width={rectangle.width}
@@ -178,68 +179,6 @@ export default class RectangleDrawer extends React.Component {
           </div>
         )}
       </div>
-    );
-  }
-}
-
-class Rect extends React.Component {
-  static propTypes = {
-    onMove: PropTypes.func,
-    onMoveEnd: PropTypes.func,
-  };
-
-  static defaultProps = {
-    onMove: () => {},
-    onMoveEnd: () => {},
-  };
-
-  state = {
-    selected: false,
-  };
-
-  handleRectClick(event) {
-    event.stopPropagation();
-    this.setState({ selected: !this.state.selected });
-  }
-
-  handleMouseDown(event) {
-    this.start = {
-      x: event.clientX,
-      y: event.clientY,
-    };
-  }
-
-  handleMouseUp(event) {
-    this.start = null;
-    this.props.onMoveEnd();
-  }
-
-  handleMouseMove(event) {
-    if (this.start) {
-      event.stopPropagation();
-      this.props.onMove({
-        dx: event.clientX - this.start.x,
-        dy: event.clientY - this.start.y,
-      });
-    }
-  }
-
-  render() {
-    const { x, y, width, height } = this.props;
-    const { selected } = this.state;
-    return (
-      <rect
-        x={x}
-        y={y}
-        width={width}
-        height={height}
-        onClick={event => this.handleRectClick(event)}
-        stroke={selected ? "purple" : "blue"}
-        fill="rgba(0,0,0,0.8)"
-        onMouseDown={event => this.handleMouseDown(event)}
-        onMouseUp={event => this.handleMouseUp(event)}
-        onMouseMove={event => this.handleMouseMove(event)}
-      />
     );
   }
 }
