@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Stage renders with image 1`] = `
+<div
+  className="stage"
+>
+  <div
+    style={
+      Object {
+        "userSelect": "none",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "position": "relative",
+          "userSelect": "none",
+        }
+      }
+    >
+      <img
+        src="awesome-image-source"
+        style={
+          Object {
+            "transform": "scale(1, 1) translate3d(0px, 0px, 0)",
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Stage renders without image 1`] = `
+<div
+  className="stage"
+/>
+`;

@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Rectangle renders 1`] = `
+<g
+  onMouseDown={[Function]}
+>
+  <rect
+    fill="rgba(0,0,0,0.8)"
+    height={600}
+    onClick={[Function]}
+    stroke="blue"
+    width={800}
+    x={10}
+    y={20}
+  />
+  <rect
+    fill="rgba(0,0,0,0.5)"
+    height={10}
+    stroke="orange"
+    style={
+      Object {
+        "cursor": "ns-resize",
+      }
+    }
+    width={10}
+    x={410}
+    y={15}
+  />
+  <rect
+    fill="rgba(0,0,0,0.5)"
+    height={10}
+    stroke="orange"
+    style={
+      Object {
+        "cursor": "ns-resize",
+      }
+    }
+    width={10}
+    x={410}
+    y={615}
+  />
+  <rect
+    fill="rgba(0,0,0,0.5)"
+    height={10}
+    stroke="orange"
+    style={
+      Object {
+        "cursor": "ew-resize",
+      }
+    }
+    width={10}
+    x={5}
+    y={320}
+  />
+  <rect
+    fill="rgba(0,0,0,0.5)"
+    height={10}
+    stroke="orange"
+    style={
+      Object {
+        "cursor": "ew-resize",
+      }
+    }
+    width={10}
+    x={805}
+    y={320}
+  />
+</g>
+`;

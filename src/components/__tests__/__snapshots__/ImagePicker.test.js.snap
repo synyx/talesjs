@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ImagePicker renders 1`] = `
+<input
+  accept="image/*"
+  onChange={[Function]}
+  type="file"
+/>
+`;

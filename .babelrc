@@ -1,11 +1,5 @@
 {
-  "env": {
-    "test": {
-      "presets": [
-        ["env", {
-          "modules": "commonjs"
-        }]
-      ]
-    }
-  }
+  "presets": [
+    "react-app"
+  ]
 }

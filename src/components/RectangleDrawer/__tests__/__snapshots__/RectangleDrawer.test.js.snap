@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RectangleDrawer renders 1`] = `
+<div
+  style={
+    Object {
+      "position": "relative",
+      "userSelect": "none",
+    }
+  }
+>
+  <img
+    src="some.image"
+  />
+</div>
+`;
